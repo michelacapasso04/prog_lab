@@ -1,0 +1,15 @@
+<div class="nav">
+    <% if !user_signed_in? %>
+        <div> <%= link_to  "Login", new_user_session_path, class: "btn btn-dark" %> </div>
+        <%= link_to root_path do %>
+            <%= image_tag("LogoWhereNext.png", :alt => "Where Next") %>
+        <% end %>
+        <div> <%= link_to  "Signup", new_user_registration_path, class: "btn btn-dark" %> </div>
+    <% else%> 
+        <div> <%= link_to  "Profile", user_path, class: "btn btn-dark" %> </div>
+        <%= link_to root_path do %>
+            <%= image_tag("LogoWhereNext.png", :alt => "Where Next") %>
+        <% end %>
+        <div> <%= link_to  "Logout", destroy_user_session_path, method: "DELETE", class: "btn btn-dark" %> </div>
+    <% end%>
+</div>

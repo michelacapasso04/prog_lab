@@ -1,0 +1,50 @@
+<div class="image_cover">
+    <%= image_tag  "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Casa_Classic_Cocktail_Bar_%26_Jazz_Club_by_Roland_Barrera.jpg/1280px-Casa_Classic_Cocktail_Bar_%26_Jazz_Club_by_Roland_Barrera.jpg" %>
+</div>
+<div class="table-scroll">
+    <h1> Create a new Gathering </h1>
+    <%= form_tag :action => 'generate_locations' do %>
+            <p>
+                <h5> Choose the date: <h5>
+                <%= date_field  :date, nil, value:Date.today%>
+            </p>
+            <h5> Choose who you want to invite: <h5>
+            <%if current_user.friends.length>0%>
+            <div class="table-conteiner">
+                <table class="table">
+                    <thead>
+                        <th colspan="1"></th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Select</th>
+                        <th colspan="3"></th>
+                        </th>
+                    </thead>
+                    <tbody>
+                        <% current_user.friends.each do |user|%>
+                            <%if user!=current_user%>
+                                <tr>
+                                    <td><% if user.avatar && user.avatar!="" %> 
+                                            <%= image_tag  user.avatar %>
+                                        <% else %>
+                                            <%= image_tag  "no-profile-picture.jpg" %>
+                                        <% end %>
+                                    </td>
+                                    <td><%= user.name %></td>
+                                    <td><%= check_box_tag 'partecipants[]', user.id -%></td>
+                                </tr>
+                            <%end%>
+                        <% end %>
+                    </tbody>
+                </table>
+            </div>
+        <%else%>
+            <h1> No friends found</h1>
+            <%= link_to  "Add new friends", users_all_path %>
+        <%end%>
+
+            <p>
+                <h4> Choose the location: <h4>
+                <%= submit_tag "Generate matching locations", class:"btn btn-primary"%>
+            </p>
+    <% end %>
+</div>

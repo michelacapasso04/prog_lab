@@ -1,0 +1,28 @@
+<div class="image_cover">
+    <%= image_tag  "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Casa_Classic_Cocktail_Bar_%26_Jazz_Club_by_Roland_Barrera.jpg/1280px-Casa_Classic_Cocktail_Bar_%26_Jazz_Club_by_Roland_Barrera.jpg" %>
+</div>
+
+<div class="table-scroll">
+    <h2> Your favourites categories: </h2>
+    <div class="table-conteiner">
+        <% if !current_user.categories.empty? %>
+        <table class="table">
+            <thead>
+            </thead>
+            
+            <tbody>
+                
+                <% current_user.categories.each do |cat| %>  
+                    <tr>   
+                        <td><%=  cat.name -%>&nbsp;</td>
+                        <td><%= link_to "Show", cat %>&nbsp; </td> 
+                    </tr>  
+                <% end %>
+            </tbody>
+        </table>
+        <% else %>
+        <p> You haven't got any favourite category yet </p>
+        <%end%>
+    </div>
+    <%= link_to  "Modify your categories", categories_path, class: "btn btn-danger" %>
+</div>

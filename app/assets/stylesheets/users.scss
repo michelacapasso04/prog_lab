@@ -1,0 +1,81 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.profile{
+    display: flex;
+}
+
+.friend_section{
+    margin-top: 20px;
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.user_info{
+    padding: 15px;
+    width: fit-content;
+    margin: auto;
+    margin-top: 1%;
+    text-align: center;
+    background-color: white;
+    border-radius: 20px;
+    .image{
+        margin: auto;
+        height: 150px;
+        img{
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+        }
+    }
+    div{
+        margin-top: 10px;
+        font-size: 1.15em;
+        a{
+            font-size: 1.05em;
+        }
+    }
+ 
+ }
+ .user_add{
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: fit-content;
+    margin: auto;
+    margin-top: 1%;
+    text-align: center;
+    background-color: white;
+    border-radius: 20px;
+    a{
+        margin-top: 20px;
+        font-size: 1.05em;
+    }
+ }
+
+ 
+ .users_show{
+    margin: auto;
+    margin-top: 2%;
+    width: 60%;
+    min-height: fit-content;
+    max-height: 60%;
+    background-color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 30px;
+    .table{
+        height: 90%;
+        width:80%;
+        margin: auto;
+        overflow: scroll;
+        img{
+            height: 60px;
+        }
+        td{
+            vertical-align: middle;
+        }
+    }
+ }

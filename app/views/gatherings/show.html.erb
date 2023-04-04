@@ -1,0 +1,50 @@
+<div class="image_cover">
+    <%= image_tag  "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Casa_Classic_Cocktail_Bar_%26_Jazz_Club_by_Roland_Barrera.jpg/1280px-Casa_Classic_Cocktail_Bar_%26_Jazz_Club_by_Roland_Barrera.jpg" %>
+</div>
+<div class="table-scroll">
+    <h1> This is the gathering </h1>
+
+    <h4>
+        <strong> Location: </strong> 
+        <%= link_to  @gathering.location.name, @gathering.location %>
+    </h4>
+    <h4>
+        <strong> Date: </strong>
+        <%= @gathering.date.strftime("%d-%m-%Y") %>
+    </h4>
+        <h3> <strong> ALL PARTECIPANTS: </strong> <h3>
+         <div class="table-conteiner">
+                <table class="table">
+                    <thead>
+                        <th colspan="1"></th>
+                        <th scope="col">Name</th>
+                        <th colspan="3"></th>
+                        </th>
+                    </thead>
+                    <tbody>
+                        <% @gathering.users.each do |user|%>
+                            <%if user!=current_user%>
+                                <tr>
+                                    <td><% if user.avatar && user.avatar!="" %> 
+                                            <%= image_tag  user.avatar %>
+                                        <% else %>
+                                            <%= image_tag  "no-profile-picture.jpg" %>
+                                        <% end %>
+                                    </td>
+                                    <td><%= user.name %></td>
+                                </tr>
+                            <%else %>
+                              <tr>
+                                    <td><% if current_user.avatar && current_user.avatar!="" %> 
+                                            <%= image_tag  current_user.avatar %>
+                                        <% else %>
+                                            <%= image_tag  "no-profile-picture.jpg" %>
+                                        <% end %>
+                                    </td>
+                                    <td>You</td>
+                                </tr>
+                            <%end%>
+                        <% end %>
+                    </tbody>
+                </table>
+            </div>

@@ -1,0 +1,13 @@
+<div class="image_cover">
+    <%= image_tag  "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Casa_Classic_Cocktail_Bar_%26_Jazz_Club_by_Roland_Barrera.jpg/1280px-Casa_Classic_Cocktail_Bar_%26_Jazz_Club_by_Roland_Barrera.jpg" %>
+</div>
+
+<div class="table-scroll">
+    <h1> Modify name of category: <%= @category.name %> </h1>
+    <%= form_for @category, :url => {:action => "update", :id => @category} do |c| %>
+
+    <p> New name: <%= c.text_field 'name' %></p>
+
+    <%= submit_tag "Modifica", class:"btn btn-primary" %>
+    <% end %>
+</div>

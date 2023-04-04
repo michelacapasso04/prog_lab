@@ -1,0 +1,146 @@
+// Place all the styles related to the Pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.image_cover{
+    position: fixed;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    text-align: center;
+    img{
+        position: absolute;
+        margin: auto;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100vw;
+    }
+}
+
+.nav{
+    top: 0;
+    z-index: 2;
+    width: 100%;
+    height: fit-content;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    -webkit-box-shadow: 0px 0px 116px -22px rgba(0,0,0,1);
+    -moz-box-shadow: 0px 0px 116px -22px rgba(0,0,0,1);
+    box-shadow: 0px 0px 116px -22px rgba(0,0,0,1);
+
+    div{
+        margin: 20px;
+        a{
+            font-size: 2em;
+        }
+    }
+
+    img{
+        height: 90px;
+    }
+    
+}
+
+.form{
+    position: fixed;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    border-radius: 20px;
+    text-align: center;
+    padding: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+    -webkit-box-shadow: 0px 0px 116px -22px rgba(0,0,0,1);
+    -moz-box-shadow: 0px 0px 116px -22px rgba(0,0,0,1);
+    box-shadow: 0px 0px 116px -22px rgba(0,0,0,1);
+
+    .field{
+        margin:10px;
+        font-size: 1em;
+        input{
+            border: 1px solid black;
+            border-radius: 10px;
+        }
+    }
+    .actions{
+        input{
+            font-size: 1em;
+            margin-bottom: 20px;
+        }
+    }
+    .allert{
+        color: red;
+    }
+    em{
+        font-size: 0.8em;
+    }
+    .btn-facebook{
+        background-color: #3b5998;
+        color: white;
+    }
+}
+
+.banner{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+    background-color: rgba(0, 0, 0, 0.747);
+    color: white;
+    border-radius: 50px;
+    padding: 40px;
+    p{
+        font-size: 1.16em;
+    }
+    .left{
+        float: left;
+        width:70%;
+    }
+    .right{
+        margin-top: 30px;
+        direction: rtl;
+        float: right;
+        width:70%;
+    }
+}
+
+.content{
+    height: 90%;
+    width: 100%;
+    display: flex;
+    padding:20px;
+    .conteiner{
+        padding:20px;
+        width: 100%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        .section{
+            width: fit-content;
+            background-color: white;
+            margin: auto;
+            padding: 30px;
+            border-radius: 30px;
+            -webkit-box-shadow: 0px 0px 7px 0px rgba(255,255,255,1);
+            -moz-box-shadow: 0px 0px 7px 0px rgba(255,255,255,1);
+            box-shadow: 0px 0px 7px 0px rgba(255,255,255,1);
+
+            a{ 
+                margin-top: 20px;
+                font-size: 1.2em;
+            }
+        }
+    }
+
+    
+}

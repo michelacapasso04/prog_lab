@@ -1,0 +1,45 @@
+<div class="image_cover">
+    <%= image_tag  "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Casa_Classic_Cocktail_Bar_%26_Jazz_Club_by_Roland_Barrera.jpg/1280px-Casa_Classic_Cocktail_Bar_%26_Jazz_Club_by_Roland_Barrera.jpg" %>
+</div>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+   crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+   integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+   crossorigin=""></script>
+<div class="table-scroll">
+  <h1><%= @location.name %></h1>
+  <p>Owner: <%if @location.user==current_user%> You <%else%> <%=@location.user.name%> <%end%> </p>
+  <%if !@cats.empty?%>
+    <p>Category: <br>
+      <% @cats.each do |c| %>
+        <%= link_to  c.name, c %> 
+      <% end %>
+    </p>
+  <%end%>
+    <div id="mapid" style="height:180px">
+    </div>
+    <script> 
+      var mymap = L.map('mapid').setView(['<%=@location.lat %>','<%=@location.long %>'], 13);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(mymap);
+    L.marker(['<%=@location.lat %>','<%=@location.long %>']).addTo(mymap)
+      .bindPopup('<%=@location.street %>')
+      .openPopup();
+    </script>
+  </p>
+
+  <!-- TODO ruoli-->
+  <%if current_user.is_user?%>
+  <%if !current_user.locations.include?(@location)%>
+    <%= link_to add_favloc_path(@location.id), id:"heart" do %>
+      <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 446.2 446.2"><path d="M223.6 410.4c-3.7 0-7.8-1.6-11-4.2L37.1 239.5C13.6 216.6 0 186.8 0 154.9s13.1-62.2 37.1-84.6c48.6-46 127.5-46 176.1 0l9.9 9.4 9.9-9.4c48.6-46 127.5-46 176.1 0l0 0c24 22.5 37.1 52.8 37.1 84.6s-13.1 62.2-37.1 84.6L234.6 406.2C231.4 408.8 227.3 410.4 223.6 410.4zM125.4 66.6c-24 0-48.1 8.9-66.4 26.1 -17.8 16.7-27.2 38.7-27.2 62.2s9.9 45.5 27.2 62.2L223.6 373.3 388.2 217.1c17.8-16.7 27.2-38.7 27.2-62.2s-9.9-45.5-27.2-62.2l0 0c-36.6-35-96.1-35-133.2 0l-20.9 19.9c-6.3 5.7-15.7 5.7-21.4 0l-20.9-19.9C173.5 75 149.4 66.6 125.4 66.6z" fill="#1185E0"/></svg>
+    <%end%>
+    <%else%>
+    <%= link_to delete_favloc_path(@location.id), method: :delete do%>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 447.2 447.2"><path d="M410.1 70.5c-48.6-46-127.5-46-176.1 0l-10.4 9.9 -9.9-9.4c-48.6-46-127.5-46-176.1 0C13.6 93.5 0 123.3 0 155.7c0 31.9 13.1 62.2 37.1 84.6l175.5 166.7c3.1 2.6 6.8 4.2 11 4.2 4.2 0 7.8-1.6 11-4.2l175.5-166.7c24-22.5 37.1-52.8 37.1-84.6C447.2 123.3 433.6 93.5 410.1 70.5z" fill="#4DCFE0"/></svg>
+    <%end%>
+  <%end%>
+  <%end%>
+</div>

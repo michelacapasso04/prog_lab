@@ -1,0 +1,96 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require leaflet
+ */
+ @import "bootstrap";
+ @import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
+ html,
+ body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+ }
+ 
+ .nav{
+   top: 0;
+   z-index: 2;
+   width: 100%;
+   height: fit-content;
+   background-color: white;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   
+   -webkit-box-shadow: 0px 0px 116px -22px rgba(0,0,0,1);
+   -moz-box-shadow: 0px 0px 116px -22px rgba(0,0,0,1);
+   box-shadow: 0px 0px 116px -22px rgba(0,0,0,1);
+
+   div{
+       margin: 20px;
+       a{
+           font-size: 2em;
+       }
+   }
+
+   img{
+       height: 90px;
+   }
+   
+}
+.table-scroll{
+    margin: auto;
+    margin-top: 2%;
+    width: 60%;
+    min-height: fit-content;
+    max-height: 500px;
+    background-color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 30px;
+    .table-conteiner{
+        width:80%;
+        min-height: fit-content;
+        max-height: 300px;
+        overflow-y: auto;
+        margin: auto;
+
+    }
+    img{
+        height: 60px;
+    }
+    td{
+        vertical-align: middle;
+    }
+    ul{
+        list-style: none;
+    }
+    .list{
+        width: fit-content;
+        margin: auto;
+        text-align: left;
+    }
+}
+
+.btn-back{
+    background-color: white;
+    margin-top: 10px;
+    margin-left: 10px;
+    font-weight: bold;
+}
+.btn-back::before{
+    content:"<";
+}
+    

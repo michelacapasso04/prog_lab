@@ -1,0 +1,46 @@
+<div class="image_cover">
+    <%= image_tag  "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Casa_Classic_Cocktail_Bar_%26_Jazz_Club_by_Roland_Barrera.jpg/1280px-Casa_Classic_Cocktail_Bar_%26_Jazz_Club_by_Roland_Barrera.jpg" %>
+</div>
+<%= link_to 'Back', :back, class:"btn btn-back" %>
+<div class="table-scroll">
+  <h1>Add a location</h1>
+
+  <%= form_tag :action => 'create' do %>
+  <p><label for="name"><strong>Name of location:</strong></label>
+
+  <%= text_field 'locations', 'name', required: true%></p>
+
+  <!-- l'utente inserisce la via del locale, la città e il paese e Open Street Map trova long e lat-->
+
+  <p>
+    <label for="street"><strong>Street:</strong></label>
+    <%= text_field 'locations','street',required: true%>
+    <label for="city"><strong>City:</strong></label>
+    <%= text_field 'locations','city',required: true%>
+
+  </p>
+
+  <p><label for = "foto"><strong>Link Photo</strong></label>:
+
+  <%= text_field 'locations', 'foto' %></p>
+
+  <h5><label for = 'cat'><STRONG>Select category:</label></strong> </h5>
+  <div class="table-conteiner">
+    <ul>
+      <% if !@categories.empty? %>
+        <% @categories.each do |cat| %>
+            <li>
+              <%=  cat.name -%>
+              <%= check_box_tag 'categ[]', cat.id -%>
+            </li>
+        <% end %>
+      <% else %>
+        <br/>
+        <%= @noCats %>
+      <%end%>
+    </ul>
+  </div>
+
+  <%= submit_tag "Create",class:"btn btn-primary" %>
+  <% end -%>
+</div>

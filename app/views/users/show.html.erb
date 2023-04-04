@@ -1,0 +1,55 @@
+<div class="image_cover">
+    <%= image_tag  "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Casa_Classic_Cocktail_Bar_%26_Jazz_Club_by_Roland_Barrera.jpg/1280px-Casa_Classic_Cocktail_Bar_%26_Jazz_Club_by_Roland_Barrera.jpg" %>
+</div>
+<div class="profile">
+    <div class="user_info">
+        <div class="image">
+            <% if current_user.avatar && current_user.avatar!="" %> 
+                <%= image_tag  current_user.avatar %>
+            <% else %>
+                <%= image_tag  "no-profile-picture.jpg" %>
+            <% end %>
+        </div>
+        <div>
+            <strong>Name:</strong> <%= current_user.name %> 
+            <br>
+            <strong>Email:</strong> <%= current_user.email %>
+            <br>
+            <strong>Role:</strong> 
+            <%if current_user.roles_mask==1 %> 
+                User
+            <%elsif current_user.roles_mask==2%>
+                Owner
+            <%else%>
+                Admin
+            <%end%>
+        </div>
+        <div>
+            <%= link_to  "Edit Profile", edit_user_path, class: "btn btn-primary" %>
+        </div>
+        <div>
+            <%= link_to  "DELETE PROFILE", user_path(:id=>current_user.id),:method => :delete, :data => {:confirm => "You sure?"},
+                                        :title => "Delete #{current_user.name}",class: "btn btn-danger" %>
+        </div>
+    </div>
+    <!--TODO aggiungi ruolo guida-->
+    <%if current_user.is_user?%> 
+        <div class="friend_section">
+            <div class="user_add">
+                <h1> Your friends</h1>
+                <h5> <cite>Good friends know the exact number of drinks you can handle before you make poor choices. </cite>&#x1F609</h5>
+                <%= link_to  "View friends", user_friends_path, class: "btn btn-warning" %>
+            </div>
+            <div class="user_add">
+                <h1> Add new friends</h1>
+                <h5> <cite>Good friends know the exact number of drinks you can handle before you make poor choices. </cite>&#x1F609</h5>
+                <%= link_to  "Find friends", users_all_path, class: "btn btn-secondary" %>
+            </div>
+             <div class="user_add">
+                    <h1> Your favourite Categories</h1>
+                    <h5> <cite>Good friends know the exact number of drinks you can handle before you make poor choices. </cite>&#x1F609</h5>
+                    <%= link_to "Your Favourite Categories", fav_categories_path, class: "btn btn-primary" %>
+                    <%= link_to "Choose Your Favourite Categories", categories_path, class: "btn btn-primary" %>             </div>
+        </div>
+    <% end %>
+    </div>

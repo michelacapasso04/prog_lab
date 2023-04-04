@@ -1,0 +1,61 @@
+<div class="image_cover">
+    <%= image_tag  "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Casa_Classic_Cocktail_Bar_%26_Jazz_Club_by_Roland_Barrera.jpg/1280px-Casa_Classic_Cocktail_Bar_%26_Jazz_Club_by_Roland_Barrera.jpg" %>
+</div>
+<div class="table-scroll">
+  <h1>Edit: <%=@update_loc.name%> </h1>
+
+  <%= form_tag :location, :url => {:action => 'update', :id => @update_loc.id},
+    :method => 'put' do %>
+    <div>
+      <%if current_user.is_owner?%>
+        <div class="list">
+          <p><label for="name">Name of location:</label>
+
+          <%= text_field 'locations', 'name' , value: @update_loc.name%></p>
+
+          <p><label for = "lat">Link Photo</label>:
+
+          <%= text_field 'locations', 'foto',  value: @update_loc.foto %></p>
+        </div>
+        <div class="list">
+          <h5> Category:</h5>
+          <%if !@categories.empty?%>
+            <div class="table-conteiner list">
+            <ul>
+              <% @categories.each do |cat| %>
+                  <li>
+                    <% if @cats.include? cat %>
+                      <%= check_box_tag 'categ[]', cat.id, true %>
+                      <%=  cat.name %>
+                    <% else %>
+                      <%= check_box_tag 'categ[]', cat.id %>
+                      <%=  cat.name %>
+                    <% end %>
+                  </li>
+              <% end %>
+            </ul>
+            </div>
+          <%else%>
+            <h3>There aren't category yet</h3>
+          <%end%>
+        </div>
+    </div>
+    <%end%>
+    <%if current_user.is_admin?%>
+      <div>
+        <h4>Status:</h4>
+          <% @status_array.each do |s| %>
+            <% if s == @update_loc.status %>
+                <%= radio_button_tag(:status, s, true)%>
+            <% else %>
+                <%= radio_button_tag(:status, s)%>
+            <% end %>
+            <%= s %>
+      <% end %>
+      </div>
+  
+  </div>
+  <%end%>
+  <%= submit_tag "Update", class:"btn btn-primary" %>
+  <% end -%>
+</div>

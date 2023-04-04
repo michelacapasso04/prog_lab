@@ -1,0 +1,20 @@
+<div class="image_cover">
+    <%= image_tag  "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Casa_Classic_Cocktail_Bar_%26_Jazz_Club_by_Roland_Barrera.jpg/1280px-Casa_Classic_Cocktail_Bar_%26_Jazz_Club_by_Roland_Barrera.jpg" %>
+</div>
+<div class="user_info">
+  <h1>Edit</h1>
+  <%= form_with model: current_user, method:"PUT" do |f| %>
+    <div>
+      Nome: <%= f.text_field :name  %>
+    </div>
+    <div>
+      Email: <%= f.email_field :email %>
+    </div>
+    <div>
+      Avatar url: <%= f.text_field :avatar %>
+    </div>
+    <div>
+      <%= f.submit "Edit" , class: "btn btn-primary"%>
+    </div>
+  <% end %>
+</div>

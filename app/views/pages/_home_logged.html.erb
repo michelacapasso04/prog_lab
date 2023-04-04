@@ -1,0 +1,82 @@
+<div class="image_cover">
+    <%= image_tag  "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Casa_Classic_Cocktail_Bar_%26_Jazz_Club_by_Roland_Barrera.jpg/1280px-Casa_Classic_Cocktail_Bar_%26_Jazz_Club_by_Roland_Barrera.jpg" %>
+</div>
+<div class="content">
+    <% if current_user.is_admin? %>
+        <div class="conteiner">
+            <div class="section">
+                <h1> Manage Locations </h1>
+                <h5> Here you can view all locations in our web site and you can edit or remove them
+                </h5>
+                <%= link_to  "All Locations", locations_path, class: "btn btn-warning"  %>
+            </div>
+            <div class="section">
+                <h1> Approve Locations </h1>
+                <h5> Here you can approve all pendings locations in our web site and you can approve them
+                </h5>
+                <%=link_to "Accept",accept_path, class: "btn btn-danger"%>
+            </div>
+        </div>
+        <div class="conteiner">
+            <div class="section">
+                <h1> Manage Categories </h1>
+                <h5> Here you can view all categories in our web site and you can edit or remove them
+                </h5>
+                <%=link_to "Categories",categories_path, class: "btn btn-danger"%>
+            </div>
+            <div class="section">
+                <h1> Manage Users </h1>
+                <h5> 
+                Here you can view all users  in our web site and you can remove them
+                </h5>
+                <%=link_to "All Users",users_all_path, class: "btn btn-warning"%>
+            </div>
+        </div>
+    <% elsif current_user.is_owner?  %> 
+    <div class="conteiner">
+            <div class="section">
+                <h1> Add a Location </h1>
+                <h5> Here you can request to add a location to our web site and wait for admins to approve or refuse it
+                </h5>
+                <%= link_to  "Insert a new location",new_location_path, class: "btn btn-warning"  %>
+            </div>
+            <div class="section">
+                <h1> Your Locations </h1>
+                <h5> Here you can view all locations that you added to our web site
+                    and you can see if they have been accepted or not.<br>
+                    Also you can edit them and wait for admins to approve the changes
+                </h5>
+                <%= link_to  "View your locations", locations_path, class: "btn btn-danger"  %>
+            </div>
+    </div>
+     <% else %>
+         <div class="conteiner">
+            <div class="section">
+                <h1> New Gatherings </h1>
+                <h5><cite> "Everybody's got to believe in something. I believe I'll have another beer." <br> ~ W.C. Fields</cite> &#x1F919 
+                </h5>
+                <%= link_to  "Create a new gathering",new_gathering_path, class: "btn btn-warning"  %>
+            </div>
+            <div class="section">
+                <h1> Your Gatherings </h1>
+                <h5> <cite> "The hard part about being a bartender is figuring out who is drunk and who is just stupid." <br> ~ Richard Braunstein</cite> &#x1F64C
+                </h5>
+                <%= link_to  "View", gatherings_path, class: "btn btn-danger"  %>
+            </div>
+        </div>
+        <div class="conteiner">
+            <div class="section">
+                <h1> See all available Locations </h1>
+                <h5><cite> "The problem with the world is that everyone is a few drinks behind." <br> ~ Humphrey Bogart</cite> &#x1F919 
+                </h5>
+                <%= link_to  "All locations",locations_path, class: "btn btn-danger"  %>
+            </div>
+            <div class="section">
+                <h1> Your favourite Locations </h1>
+                <h5> <cite> "Alcohol may be man's worst enemy, but the bible says love your enemy." <br> ~ Frank Sinatra</cite> &#x1F64C
+                </h5>
+                <%= link_to  "View", index_favloc_path, class: "btn btn-warning"  %>
+            </div>
+        </div>
+     <%end%>
+</div>
